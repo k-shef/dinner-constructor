@@ -1,13 +1,11 @@
 package ru.practicum.dinner;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     static DinnerConstructor dc;
     static Scanner scanner;
-    static ArrayList<String> dishTypes = new ArrayList<>();
 
     public static void main(String[] args) {
         dc = new DinnerConstructor();
@@ -26,8 +24,6 @@ public class Main {
                     break;
                 case "3":
                     return;
-                default:
-                    System.out.println("Неверная команда. Пожалуйста, выберите 1, 2 или 3.");
             }
         }
     }
@@ -44,7 +40,8 @@ public class Main {
         String dishType = scanner.nextLine();
         System.out.println("Введите название блюда:");
         String dishName = scanner.nextLine();
-        dc.addNewDish(dishType, dishName);
+
+        // добавьте новое блюдо
     }
 
     private static void generateDishCombo() {
@@ -54,22 +51,15 @@ public class Main {
         int numberOfCombos = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.println("Введите типы блюда, разделяя символом переноса строки (enter). Для завершения ввода введите пустую строку");
-        String nextItem;
-        do {
-            nextItem = scanner.nextLine();
-            if (!nextItem.isEmpty()) {
-                if (dc.menu.containsKey(nextItem)) {
-                    dishTypes.add(nextItem);
-                } else {
-                    System.out.println("Такого типа блюд еще нет. Пожалуйста, выберите другой тип.");
-                }
-            }
-        } while (!nextItem.isEmpty());
+        System.out.println("Вводите типы блюда, разделяя символом переноса строки (enter). Для завершения ввода введите пустую строку");
+        String nextItem = scanner.nextLine();
 
-        ArrayList<ArrayList<String>> combos = dc.generateDishCombo(dishTypes, numberOfCombos);
-        for (int i = 0; i < combos.size(); i++) {
-            System.out.println("Комбо " + (i + 1) + ": " + "\n" + combos.get(i));
+        //реализуйте ввод типов блюд
+        while (!nextItem.isEmpty()) {
+
         }
+
+        // сгенерируйте комбинации блюд и выведите на экран
+
     }
 }
